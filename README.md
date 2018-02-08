@@ -1,6 +1,5 @@
-# helloworld
-
-> A Vue.js project
+# vue-sku  
+一款基于vue的仿淘宝sku的代码
 
 ## Build Setup
 
