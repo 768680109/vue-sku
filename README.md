@@ -1,6 +1,6 @@
 # vue-sku  
 一款基于vue的仿淘宝sku的代码
-
+吐血制作，给广大前端朋友们提供便利
 ## Build Setup
 
 ``` bash
