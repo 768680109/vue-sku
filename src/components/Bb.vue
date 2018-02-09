@@ -18,7 +18,6 @@
 </template>
 
 <script>
-	import Vue from 'vue'
 	export default{
 		data(){
 			return{
@@ -92,10 +91,12 @@
 				nowPrice:"--",
 			}
 		},
+		created(){
+			this.queryDGoodsById();
+		},
 		methods:{
 			/*商品详情数据*/
 			queryDGoodsById(){
-				
 				this.initSKU();//初始化，得到SKUResult
 				/*根据SKUResult得到初始化的时候哪些不能点击*/
 				for(let i=0;i<this.keys.length;i++){
@@ -105,7 +106,6 @@
 						}
 					}
 				}
-				console.log(this.SKUResult);
 			},
 			//获得对象的key
 			getObjKeys(obj) {
@@ -240,7 +240,6 @@
 					}
 				}
 				
-				Vue.set(this.keys, index, this.keys[index]);
 				//已经选择的节点
 				let haveChangedId = [];
 				for(let i=0;i<this.keys.length;i++){
@@ -259,8 +258,9 @@
 					var prices = this.SKUResult[haveChangedId.join(';')].prices;
 					var maxPrice = Math.max.apply(Math, prices);
 					var minPrice = Math.min.apply(Math, prices);
-					this.nowPrice = maxPrice > minPrice ? minPrice + "-" + maxPrice : maxPrice;
-					//用已选中的节点验证待测试节点 underTestObjs
+					this.nowPrice = maxPrice > minPrice ? minPrice + "-" + maxPrice : maxPrice;/*筛选价格*/
+					
+					//用已选中的节点验证待测试节点 
 					let daiceshi = [];//待测试节点
 					let daiceshiId = [];
 					for(let i=0;i<this.keys.length;i++){
@@ -308,7 +308,6 @@
 						}
 					}
 				} else {
-					console.log(123);
 					//设置默认价格
 					this.nowPrice = "--"
 					//设置属性状态
@@ -325,26 +324,23 @@
 				}
 			},
 		},
-		created(){
-			this.queryDGoodsById();
-		},
-		watch:{
-		},
-		filters:{
-			
-		}
 	}
 </script>
 
 <style>
-	.bh-sku-selected {
-		color: red;
-	}
+	input{  
+	   background:none;  
+	   outline:none;  
+	   border:1px solid #999;  
+	   padding:2px 10px;
+	   margin:10px;
+	}  
 	.notClick{
-		background:black;
+		background:#999999;
 		color:white;
 	}
 	#goodsinfo .tabContent .active{
 		background:red;
+		color:white;
 	}
 </style>
