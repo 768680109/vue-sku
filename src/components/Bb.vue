@@ -278,6 +278,7 @@
 					for(let i=0;i<haveChangedId.length;i++){
 						var indexs = daiceshiId.indexOf(haveChangedId[i]);
 						if (indexs > -1) {
+							daiceshiId.splice(indexs, 1);
 							daiceshi.splice(indexs, 1);
 						}
 					}
